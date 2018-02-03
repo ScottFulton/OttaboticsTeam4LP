@@ -1,9 +1,10 @@
 #include <Servo.h>
+
 // defines pins numbers
 const int trigPin = 9;
 const int echoPin = 10;
 const int servoPin = 8;
-const int motorPin1 = 2;
+const int motorPin1 = 8;
 const int motorPin2 = 4;
 const int motorPin3 = 7;
 const int motorPin4 = 6;
@@ -24,10 +25,6 @@ Servo myservo;
 void setup() {
   // put your setup code here, to run once:
   myservo.attach(servoPin);
-  pinMode(motorPin1, OUTPUT);
-  pinMode(motorPin2, OUTPUT);
-  pinMode(motorPin3, OUTPUT);
-  pinMode(motorPin4, OUTPUT);
   pinMode(trigPin, OUTPUT); // Sets the trigPin as an Output
   pinMode(echoPin, INPUT); // Sets the echoPin as an Input
   Serial.begin(9600); // Starts the serial communication
@@ -45,7 +42,7 @@ void loop(){
 //  {
 //    right(40);
 //  }
-  forward(40);
+  analogWrite( motorPin1, 255 );
 }
 float ultrasonic()
 {
@@ -99,13 +96,9 @@ void left(int t)
 }
 void forward(int t)
 {
-  analogWrite( motorPin1, HIGH );
+  analogWrite( motorPin1, 255 );
   analogWrite(motorPin2, HIGH);
-  analogWrite( motorPin3, HIGH );
-  analogWrite(motorPin4, HIGH);
   delay(t);
-  analogWrite( motorPin1, LOW );
+  analogWrite( motorPin1, 0 );
   analogWrite(motorPin2, LOW);
-  analogWrite( motorPin3, LOW );
-  analogWrite(motorPin4, LOW);
 }
