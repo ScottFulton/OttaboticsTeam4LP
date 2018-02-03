@@ -3,9 +3,9 @@
 const int trigPin = 9;
 const int echoPin = 10;
 const int servoPin = 8;
-const int motorPin1 = 3;
+const int motorPin1 = 2;
 const int motorPin2 = 4;
-const int motorPin3 = 5;
+const int motorPin3 = 7;
 const int motorPin4 = 6;
 int pos = 0;
 int flag = 0;
@@ -34,17 +34,18 @@ void setup() {
 }
 void loop(){
   // put your main code here, to run repeatedly:
-  ultrasonic();
-  sweep();
-  //motorSystemFunc();
-  if (distance <= 10 && pos > 120)
-  {
-    left(40);
-   }
-  else if (distance <= 10 && pos < 60)
-  {
-    right(40);
-  }
+//  ultrasonic();
+//  sweep();
+//  //motorSystemFunc();
+//  if (distance <= 10 && pos > 120)
+//  {
+//    left(40);
+//   }
+//  else if (distance <= 10 && pos < 60)
+//  {
+//    right(40);
+//  }
+  forward(40);
 }
 float ultrasonic()
 {
@@ -98,13 +99,13 @@ void left(int t)
 }
 void forward(int t)
 {
-  digitalWrite( motorPin1, HIGH );
-  digitalWrite(motorPin2, HIGH);
-  digitalWrite( motorPin3, HIGH );
-  digitalWrite(motorPin4, HIGH);
+  analogWrite( motorPin1, HIGH );
+  analogWrite(motorPin2, HIGH);
+  analogWrite( motorPin3, HIGH );
+  analogWrite(motorPin4, HIGH);
   delay(t);
-  digitalWrite( motorPin1, LOW );
-  digitalWrite(motorPin2, LOW);
-  digitalWrite( motorPin3, LOW );
-  digitalWrite(motorPin4, LOW);
+  analogWrite( motorPin1, LOW );
+  analogWrite(motorPin2, LOW);
+  analogWrite( motorPin3, LOW );
+  analogWrite(motorPin4, LOW);
 }
